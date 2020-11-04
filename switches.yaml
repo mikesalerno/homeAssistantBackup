@@ -1,0 +1,249 @@
+#################################################################################################################
+#             _            _              _        _             _             _       _    _           _        
+#            / /\         / /\      _    /\ \     /\ \         /\ \           / /\    / /\ /\ \        / /\      
+#           / /  \       / / /    / /\   \ \ \    \_\ \       /  \ \         / / /   / / //  \ \      / /  \     
+#          / / /\ \__   / / /    / / /   /\ \_\   /\__ \     / /\ \ \       / /_/   / / // /\ \ \    / / /\ \__  
+#         / / /\ \___\ / / /_   / / /   / /\/_/  / /_ \ \   / / /\ \ \     / /\ \__/ / // / /\ \_\  / / /\ \___\ 
+#         \ \ \ \/___// /_//_/\/ / /   / / /    / / /\ \ \ / / /  \ \_\   / /\ \___\/ // /_/_ \/_/  \ \ \ \/___/ 
+#          \ \ \     / _______/\/ /   / / /    / / /  \/_// / /    \/_/  / / /\/___/ // /____/\      \ \ \       
+#      _    \ \ \   / /  \____\  /   / / /    / / /      / / /          / / /   / / // /\____\/  _    \ \ \      
+#     /_/\__/ / /  /_/ /\ \ /\ \/___/ / /__  / / /      / / /________  / / /   / / // / /______ /_/\__/ / /      
+#     \ \/___/ /   \_\//_/ /_/ //\__\/_/___\/_/ /      / / /_________\/ / /   / / // / /_______\\ \/___/ /       
+#      \_____\/        \_\/\_\/ \/_________/\_\/       \/____________/\/_/    \/_/ \/__________/ \_____\/        
+#                                                                                                                
+#################################################################################################################
+# Coming Home - Start
+  - platform: momentary
+    name: coming home
+    mode: on
+    toggle_for: 5
+    cancellable: true    
+    # Comming Home - End
+# Dominic's Nightlight - Start
+# Scenes - Start
+# Campfire - Start
+  - platform: momentary
+    name: campfire
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Campfire - End
+# Christmas - Start
+  - platform: momentary
+    name: christmas
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Christmas - End
+# Color Flow - Start
+  - platform: momentary
+    name: color_flow
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Color Flow - End
+# Disco - Start
+  - platform: momentary
+    name: disco
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Disco - End
+# Firetruck - Start
+  - platform: momentary
+    name: firetruck
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Firetruck - End
+# Mood Light - Start
+  - platform: momentary
+    name: mood_light
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Mood Light - End
+# Siren - Start
+  - platform: momentary
+    name: siren
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Siren - End
+# Solid Color - Start
+  - platform: momentary
+    name: solid_color
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Solid Color - End
+# Underwater - Start
+  - platform: momentary
+    name: underwater
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Underwater - End
+# Valentines - Start
+  - platform: momentary
+    name: valentines
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Scenes - End
+# Solid Colors - Start
+  - platform: momentary
+    name: white
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: red
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: crimson
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: salmon
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: orange
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: gold
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: yellow
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: green
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: turquoise
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: cyan
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: sky_blue
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: blue
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: purple
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: magenta
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: pink
+    mode: on
+    toggle_for: 5
+    cancellable: true
+  - platform: momentary
+    name: lavender
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Solid Colors - End
+# Dominic's Nightlight - End
+# Dryer - Start
+  - platform: momentary
+    name: dryer
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Dryer - End
+# Master Bedroom TV - Start
+  - platform: momentary
+    name: master_bedroom_tv
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Master Bedroom TV - End
+# Washer - Start
+  - platform: momentary
+    name: washer
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Washer - End
+# OctoPrint - Start
+  - platform: command_line
+    scan_interval: 5
+    switches:
+      connection_octoprint:
+        friendly_name: "Octoprint Connect"
+        command_on: !secret octo_connect
+        command_off: !secret octo_disconnect
+        command_state: !secret octo_cmd_state
+        value_template: "{{ not is_state('sensor.octoprint_current_state', 'unknown') }}"
+# Connect - End
+# Pause - Start
+  - platform: command_line
+    scan_interval: 5
+    switches:
+      pause_octoprint:
+        friendly_name: "Octoprint Pause"
+        command_on: !secret octo_pause
+        command_off: !secret octo_pause
+# Pause - End
+# Resume - Start
+  - platform: command_line
+    scan_interval: 5
+    switches:
+      resume_octoprint:
+        friendly_name: "Octoprint Resume"
+        command_on: !secret octo_resume
+        command_off: !secret octo_resume
+# Resume - End
+# OctoPrint Level - Start
+  - platform: momentary
+    name: octoprint_level
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# OctoPrint Level - End
+# OctoPrint Bed Heater - Start
+  - platform: mqtt
+    unique_id: octopint_bed_heater
+    name: OctoPrint Bed Heater
+    command_topic: "octoPrint/hassControl/commands"
+    payload_on: "M140 S50"
+    payload_off: "M140 S0"
+# OctoPrint Bed Heater - End
+# OctoPrint Hotend Heater - Start
+  - platform: mqtt
+    unique_id: octopint_hotend_heater
+    name: OctoPrint Hotend Heater
+    command_topic: "octoPrint/hassControl/commands"
+    payload_on: "M104 S160"
+    payload_off: "M104 S0"
+# OctoPrint Hotend Heater - End

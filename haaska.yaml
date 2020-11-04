@@ -1,0 +1,67 @@
+###################################################################################################
+#              _       _    _                  _           _            _              _           
+#             / /\    / /\ / /\               / /\        / /\         /\_\           / /\         
+#            / / /   / / // /  \             / /  \      / /  \       / / /  _       / /  \        
+#           / /_/   / / // / /\ \           / / /\ \__  / / /\ \__   / / /  /\_\    / / /\ \       
+#          / /\ \__/ / // / /\ \ \         / / /\ \___\/ / /\ \___\ / / /__/ / /   / / /\ \ \      
+#         / /\ \___\/ // / /  \ \ \        \ \ \ \/___/\ \ \ \/___// /\_____/ /   / / /  \ \ \     
+#        / / /\/___/ // / /___/ /\ \        \ \ \       \ \ \     / /\_______/   / / /___/ /\ \    
+#       / / /   / / // / /_____/ /\ \   _    \ \ \  _    \ \ \   / / /\ \ \     / / /_____/ /\ \   
+#      / / /   / / // /_________/\ \ \ /_/\__/ / / /_/\__/ / /  / / /  \ \ \   / /_________/\ \ \  
+#     / / /   / / // / /_       __\ \_\\ \/___/ /  \ \/___/ /  / / /    \ \ \ / / /_       __\ \_\ 
+#     \/_/    \/_/ \_\___\     /____/_/ \_____\/    \_____\/   \/_/      \_\_\\_\___\     /____/_/ 
+#                                                                                                  
+###################################################################################################
+  smart_home:
+# Filters - Start
+    filter:
+# Include Entities - Start
+      include_entities:
+# Camera - Start
+        - camera.octoprint
+# Camera - End
+# Cover - Start
+        - cover.left_garage_door_opener
+        - cover.master_bedroom_back_blind
+        - cover.master_bedroom_side_blind
+        - cover.right_garage_door_opener
+# Cover - End
+# Group - Start
+        - group.christmas_lights
+        - group.kitchen_cabinet_lights
+# Group - End
+# Input Boolean - Start
+        - input_boolean.3d_printer_power
+        - input_boolean.goodnight
+        - input_boolean.octoprint_bed
+        - input_boolean.octoprint_hotend
+        - input_boolean.octoprint_level
+# Input Boolean - End
+# Light - Start
+        - light.3d_printer
+        - light.attic
+        - light.dining_room_bloom
+        - light.family_room_tv_bloom
+        - light.hallway_night_light
+        - light.living_room_tv_bloom
+        - light.nanoleaf
+        - light.office_desk
+# Light - End
+# Switch - Start
+        - switch.adguard_filtering
+        - switch.adguard_parental_control
+        - switch.adquard_safe_browsing
+        - switch.adguard_safe_search
+        - switch.momentary_coming_home
+        - switch.fireplace
+        - switch.left_garage_door
+        - switch.living_room_tv
+        - switch.living_room_window
+        - switch.octoprint_cancel
+        - switch.pause_octoprint
+        - switch.radon_system
+        - switch.right_garage_door
+        - switch.water_valve
+# Switch - End
+# Include Entities - End
+# Filters - End

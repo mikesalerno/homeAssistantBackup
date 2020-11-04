@@ -1,0 +1,156 @@
+############################################################################################################################################################################################
+#                     _             _            _             _        _          _        _                  _           _                 _          _          _            _           
+#                   /\ \           /\ \         /\ \     _    /\ \     /\ \       /\ \     /\_\               /\ \        / /\              /\ \       /\ \       /\ \         /\ \     _   
+#                  /  \ \         /  \ \       /  \ \   /\_\ /  \ \    \ \ \     /  \ \   / / /         _    /  \ \      / /  \             \_\ \      \ \ \     /  \ \       /  \ \   /\_\ 
+#                 / /\ \ \       / /\ \ \     / /\ \ \_/ / // /\ \ \   /\ \_\   / /\ \_\  \ \ \__      /\_\ / /\ \ \    / / /\ \            /\__ \     /\ \_\   / /\ \ \     / /\ \ \_/ / / 
+#                / / /\ \ \     / / /\ \ \   / / /\ \___/ // / /\ \_\ / /\/_/  / / /\/_/   \ \___\    / / // / /\ \_\  / / /\ \ \          / /_ \ \   / /\/_/  / / /\ \ \   / / /\ \___/ /  
+#               / / /  \ \_\   / / /  \ \_\ / / /  \/____// /_/_ \/_// / /    / / / ______  \__  /   / / // / /_/ / / / / /  \ \ \        / / /\ \ \ / / /    / / /  \ \_\ / / /  \/____/   
+#              / / /    \/_/  / / /   / / // / /    / / // /____/\  / / /    / / / /\_____\ / / /   / / // / /__\/ / / / /___/ /\ \      / / /  \/_// / /    / / /   / / // / /    / / /    
+#             / / /          / / /   / / // / /    / / // /\____\/ / / /    / / /  \/____ // / /   / / // / /_____/ / / /_____/ /\ \    / / /      / / /    / / /   / / // / /    / / /     
+#            / / /________  / / /___/ / // / /    / / // / /   ___/ / /__  / / /_____/ / // / /___/ / // / /\ \ \  / /_________/\ \ \  / / /   ___/ / /__  / / /___/ / // / /    / / /      
+#           / / /_________\/ / /____\/ // / /    / / // / /   /\__\/_/___\/ / /______\/ // / /____\/ // / /  \ \ \/ / /_       __\ \_\/_/ /   /\__\/_/___\/ / /____\/ // / /    / / /       
+#           \/____________/\/_________/ \/_/     \/_/ \/_/    \/_________/\/___________/ \/_________/ \/_/    \_\/\_\___\     /____/_/\_\/    \/_________/\/_________/ \/_/     \/_/        
+#                                                                                                                                                                                           
+############################################################################################################################################################################################
+# Automation - Start
+automation: !include automations.yaml
+# Automation - End
+# Binary Sensors - Start
+binary_sensor: !include binary_sensors.yaml
+# Binary Sensors - End
+# Browser Mod - Start
+browser_mod:
+# Browser Mode - End
+# Camera - Start
+camera: !include cameras.yaml
+# Camera - End
+# Configuration in UI - Start
+config:
+# Configuration in UI - End
+# Customize - Start
+homeassistant:
+  customize: !include customize.yaml
+# Customize - End
+device_tracker: !include device_tracker.yaml
+# Discovery - Start
+discovery:
+# Discovery - End
+# DuckDNS & Let's Encrypt - Start
+http:
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
+# DuckDNS & Let's Encrypt - End
+# Ecovacs - Start
+ecovacs:
+  username: !secret ecovacs_user
+  password: !secret ecovacs_pass
+  country: us
+  continent: na
+# Ecovacs - End
+# FFmpeg - Start
+ffmpeg:
+# FFmpeg - End
+# Frontend - Start
+frontend:
+  themes: !include_dir_merge_named themes/
+# Frontend - End
+# Google Calendar - Start
+google:
+  client_id: !secret google_id_mike
+  client_secret: !secret google_secret_mike
+# Google Calendar - End
+# Groups - Start
+group: !include groups.yaml
+# Groups - End
+# Haaska - Start
+alexa: !include haaska.yaml
+# Haaska - End
+# History - Start
+history: !include history.yaml
+# History - End
+# Input Boolean - Start
+input_boolean:
+# Input Boolean - End
+# Input Date/Time - Start
+input_datetime:
+# Input Date/Time - End
+# Input Number - Start
+input_number:
+# Input Number - End
+# Input Select - Start
+input_select:
+# Input Select - End
+# Input Text - Start
+input_text:
+# Input Text - End
+# Light - Start
+light: !include lights.yaml
+# Light - End
+# Logbook - Start
+logbook: !include logbook.yaml
+# Logbook - End
+# Lutron - Start
+lutron_caseta_pro:
+    bridges:
+      - host: !secret lutron_ip
+        mac: !secret lutron_mac
+        switch: [ 42, 19, 30, 4, 25, 39, 8 ]
+        fan: [ 3, 41 ]
+# Lutron - End
+# Media Player - Start
+media_player: !include media_players.yaml
+# Media Player - End
+# Media Source - Start
+media_source:
+# Media Source - End
+# Mobile App Integration - Start
+mobile_app:
+# Mobile App Integration - End
+# Momentary Switch - Start
+momentary:
+# Momentary Switch - End
+# Owlet - Start
+owlet:
+  username: !secret owlet_user
+  password: !secret owlet_password
+  name: Antonella's Owlet
+# Owlet - End
+# Person Entities - Start
+person:
+# Person Entities - End
+# Recorder - Start
+recorder: !include recorder.yaml
+# Recorder - End
+# Samsung TV Smart - Start
+samsungtv_smart:
+  - host: !secret living_room_tv_ip
+    source_list: !secret living_room_tv_source
+# Samsung TV Smart - End
+# Sensors - Start
+sensor: !include sensors.yaml
+# Sensors - End
+# SSDP - Start
+ssdp:
+# SSDP - End
+# Stream - Start
+stream:
+# Stream - End
+# Switch - Start
+switch: !include switches.yaml
+# Switch - End
+# System Health - Start
+system_health:
+# System Health - End
+# Text to Speech - Start
+tts:
+  - platform: google_translate
+# Text to Speech - End
+# Sun Tracker - Start
+sun:
+# Sun Tracker - End
+# Zeroconf - Start
+zeroconf:
+# Zeroconf - End
+# Zones - Start
+zone: !include zones.yaml
+# Zones - End

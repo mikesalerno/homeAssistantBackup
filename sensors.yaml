@@ -1,0 +1,368 @@
+####################################################################################################
+#              _            _            _             _            _            _          _        
+#            / /\         /\ \         /\ \     _    / /\         /\ \         /\ \       / /\      
+#           / /  \       /  \ \       /  \ \   /\_\ / /  \       /  \ \       /  \ \     / /  \     
+#          / / /\ \__   / /\ \ \     / /\ \ \_/ / // / /\ \__   / /\ \ \     / /\ \ \   / / /\ \__  
+#         / / /\ \___\ / / /\ \_\   / / /\ \___/ // / /\ \___\ / / /\ \ \   / / /\ \_\ / / /\ \___\ 
+#         \ \ \ \/___// /_/_ \/_/  / / /  \/____/ \ \ \ \/___// / /  \ \_\ / / /_/ / / \ \ \ \/___/ 
+#          \ \ \     / /____/\    / / /    / / /   \ \ \     / / /   / / // / /__\/ /   \ \ \       
+#      _    \ \ \   / /\____\/   / / /    / / /_    \ \ \   / / /   / / // / /_____/_    \ \ \      
+#     /_/\__/ / /  / / /______  / / /    / / //_/\__/ / /  / / /___/ / // / /\ \ \ /_/\__/ / /      
+#     \ \/___/ /  / / /_______\/ / /    / / / \ \/___/ /  / / /____\/ // / /  \ \ \\ \/___/ /       
+#      \_____\/   \/__________/\/_/     \/_/   \_____\/   \/_________/ \/_/    \_\/ \_____\/        
+#                                                                                                   
+####################################################################################################
+# Airthings Wave Plus - Start
+  - platform: airthings
+    mac: !secret airthings_mac
+# Airthings Wave Plus - End
+# Command Line - Start
+# Octoprint - Start
+# Filament API - Start    
+  - platform: command_line
+    command: !secret octo_filament
+    name: "Filament Amount API"
+    value_template: '{{ value_json.job.filament.tool0.length | float / 1000 }}'
+    unit_of_measurement: 'm'
+# Filament API - End
+# STL Size API - Start
+  - platform: command_line
+    command: !secret octo_size
+    name: "STL Size API"
+    value_template: '{{ value_json.job.file.size | float / 1000000 }}'
+# STL Size API - End
+# Octoprint - End
+# Command Line - End
+# Google Keep - Start
+  - platform: google_keep
+    username: !secret google_keep_user
+    password: !secret google_keep_password
+    pinned: true
+  - platform: keep_notes_sensor
+    name: "Keep Sensor 1"
+    username: !secret google_keep_user
+    password: !secret google_keep_password
+    list_id: "1EtgHKMc2vtqg15xai04slKIl_Qq-fcj4iP1UstLbbpizxGNmh4xeK0XZ9fHeZdGeO0Sh"
+  - platform: keep_notes_sensor
+    name: "Keep Sensor 2"
+    username: !secret google_keep_user
+    password: !secret google_keep_password
+    list_id: "1LTF6IK-EWuxZGAp82mZqfQ2utKyoYlwnYOUDlLioav8hf14jY_DYn1HYre8AWKxgKP2l"
+  - platform: keep_notes_sensor
+    name: "Keep Sensor 3"
+    username: !secret google_keep_user
+    password: !secret google_keep_password
+    list_id: "18hXVhwtWJK2ynsqA0GgYlXOcV1-e4dxlSqGQTpqiC6P3fcEDbiN6g2-lLqSCBhyZgXdF"
+# Google Keep - End
+# Moon - Start
+  - platform: moon
+# Moon - End
+# Template - Start
+  - platform: template
+    sensors:
+# Last Alexa - Start
+      last_alexa:
+        entity_id:
+          - media_player.antonella_s_echo_dot
+          - media_player.dominic_s_echo_dot
+          - media_player.family_room_echo
+          - media_player.kitchen_echo_show
+          - media_player.living_room_fire_tv_cube
+          - media_player.master_bedroom_echo_spot
+        value_template: >
+          {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+# Last Alexa - End
+# Next Dawn - Start
+      nextdawn:
+        entity_id: sun.sun
+        friendly_name: 'Next Dawn'
+        value_template: >
+          {{ as_timestamp(states.sun.sun.attributes.next_dawn) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+        icon_template: mdi:weather-sunset-up
+# Next Dawn - End
+# Next Dusk - Start
+      nextdusk:
+        entity_id: sun.sun
+        friendly_name: 'Next Dusk'
+        value_template: >
+          {{ as_timestamp(states.sun.sun.attributes.next_dusk) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+        icon_template: mdi:weather-sunset-down
+# Next Sunrise - Start
+      nextsunrise:
+        entity_id: sun.sun
+        friendly_name: 'Next Sunrise'
+        value_template: >
+          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+        icon_template: mdi:weather-sunset-up
+# Next Sunrise - End
+# Next Sunset - Start
+      nextsunset:
+        entity_id: sun.sun
+        friendly_name: 'Next Sunset'
+        value_template: >
+          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %I:%M %p') | replace(" 0", "") }}
+        icon_template: mdi:weather-sunset-down
+# Next Sunset - End
+# Normal Date - Start
+      normaldate:
+        entity_id: sensor.date
+        value_template: >
+          {{ (now().strftime('%A,'))~now().strftime(' %B')~now().strftime(' %d') }}
+        icon_template: mdi:calendar
+# Normal Time - Start
+      normaltime:
+        entity_id: sensor.time
+        value_template: >
+          {{ (now().strftime('%I')|int)~now().strftime(':%M ')~now().strftime('%p') }}
+        icon_template: mdi:clock
+# Normal Time - End
+# Clothing Forecast - Start
+      clothing_forecast:
+        friendly_name: "Clothing Forecast"
+        unit_of_measurement: ''
+        entity_id: sensor.nws_daytime_temperature
+        value_template: >-
+            {%- if states('sensor.nws_daytime_temperature')|float > 63 %}
+              {%- if states('sensor.nws_daytime_temperature')|float < 80 %}
+                Nice
+              {% elif states('sensor.nws_daytime_temperature')|float > 95 %}
+                Hot
+              {% else %}
+                Toasty
+              {%- endif %}
+            {% elif states('sensor.nws_daytime_temperature')|float < 64 %}
+              {%- if states('sensor.nws_daytime_temperature')|float < 32 %}
+                Freezing
+              {% elif states('sensor.nws_daytime_temperature')|float > 50 %}
+                Chilly
+              {% else %}
+                Cold
+              {%- endif %}
+            {% else %}
+            Unknown
+            {%- endif %}
+# Clothing Forecast - End
+# Current Forecast - Start
+      nws_current_forecast:
+        friendly_name: 'Current Forecast'
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.attributes.forecast[0].detailed_description | truncate(250, False) }}"
+# Current Forecast - End
+# Current Rain - Start
+      nws_current_rain_forecast:
+        friendly_name: 'Current Rain Chance'
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.attributes.forecast[0].precipitation_probability }}"
+        unit_of_measurement: '%'
+# Current Rain - End
+# Current Temperature - Start
+      nws_current_temperature:
+        friendly_name: 'Current Temperature'
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.attributes.temperature }}"
+        device_class: temperature
+# Current Temperature - End
+# Daytime Temperature - Start
+      nws_daytime_temperature:
+        friendly_name: 'Daytime Temperature'
+        entity_id: weather.klwm_daynight
+        value_template: >-
+            {% if states.weather.klwm_daynight.attributes.forecast[0].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[0].temperature }}
+            {% elif states.weather.klwm_daynight.attributes.forecast[1].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[1].temperature }}
+            {% endif %}
+        device_class: temperature
+# Daytime Temperature - End
+# Current Condition - Start
+      nws_current_condition: 
+        friendly_name: 'Current Condition'
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.state }}"
+# Current Condition - End
+# Current Humidity - Start
+      nws_current_humidity:
+        friendly_name: 'Current Humidity'
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.attributes.humidity }}"
+# Current Humidity - End
+# Current Visibility - Start
+      nws_current_visibility:
+        friendly_name: "Current Visability"
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.attributes.visibility }}"
+# Current Visibility - End
+# Current Windspeed - Start
+      nws_current_windspeed:
+        friendly_name: "Current Windspeed"
+        entity_id: weather.klwm_daynight
+        value_template: "{{ states.weather.klwm_daynight.attributes.wind_speed }}"
+# Current Windspeed - End
+# Overnight Low - Start
+      nws_overnight_low:
+        friendly_name: "Overnight Low"
+        entity_id: weather.klwm_daynight
+        unit_of_measurement: ''
+        value_template: >-
+            {% if states.weather.klwm_daynight.attributes.forecast[0].daytime == False %}
+              {{ states.weather.klwm_daynight.attributes.forecast[0].temperature }}
+            {% elif states.weather.klwm_daynight.attributes.forecast[1].daytime == False %}
+              {{ states.weather.klwm_daynight.attributes.forecast[1].temperature }}
+            {% endif %}
+# Overnight Low - End
+# Overnight Forecast - Start
+      nws_overnight_forecast:
+        friendly_name: "Overnight Forecast"
+        entity_id: weather.klwm_daynight
+        unit_of_measurement: ''
+        value_template: >-
+            {% if states.weather.klwm_daynight.attributes.forecast[0].daytime == False %}
+              {{ states.weather.klwm_daynight.attributes.forecast[0].detailed_description | truncate(250, False) }}
+            {% elif states.weather.klwm_daynight.attributes.forecast[1].daytime == False %}
+              {{ states.weather.klwm_daynight.attributes.forecast[1].detailed_description | truncate(250, False) }}
+            {% elif states.weather.klwm_daynight.attributes.forecast[2].daytime == False %}
+              {{ states.weather.klwm_daynight.attributes.forecast[2].detailed_description | truncate(250, False) }}
+            {% endif %}
+# Overnight Forecast - End
+# Forecast Tomorrow - Start
+      nws_forecast_tomorrow:
+        friendly_name: "Forecast Tomorrow"
+        entity_id: weather.klwm_daynight
+        unit_of_measurement: ''
+        value_template: >-
+            {%- if states.weather.klwm_daynight.attributes.forecast[1].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[1].detailed_description | truncate(250, False) }} 
+            {% elif states.weather.klwm_daynight.attributes.forecast[2].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[2].detailed_description | truncate(250, False) }} 
+            {%- endif %}
+# Forecast Rain Tomorrow - Start
+      nws_forecast_rain_tomorrow:
+        friendly_name: "Rain Chance Tomorrow"
+        entity_id: weather.klwm_daynight
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if states.weather.klwm_daynight.attributes.forecast[1].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[1].precipitation_probability }} 
+            {% elif states.weather.klwm_daynight.attributes.forecast[2].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[2].precipitation_probability }} 
+            {%- endif %}
+# Forecast Rain Tomorrow - End
+# Forecast Tomorrow Night - Start
+      nws_forecast_tomorrow_night:
+        friendly_name: "Forecast Tomorrow Night"
+        entity_id: weather.klwm_daynight
+        unit_of_measurement: ''
+        value_template: >-
+            {%- if states.weather.klwm_daynight.attributes.forecast[1].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[2].detailed_description | truncate(250, False) }} 
+            {% elif states.weather.klwm_daynight.attributes.forecast[2].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[3].detailed_description | truncate(250, False) }}
+            {%- endif %}
+# Forecast Tomorrow Night - End
+# Rain Tomorrow - Start            
+      nws_forecast_rain_tomorrow_night:
+        friendly_name: "Rain Chance Tomorrow Night"
+        entity_id: weather.klwm_daynight
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if states.weather.klwm_daynight.attributes.forecast[1].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[2].precipitation_probability  }} 
+            {% elif states.weather.klwm_daynight.attributes.forecast[2].daytime == True %}
+              {{ states.weather.klwm_daynight.attributes.forecast[3].precipitation_probability  }}
+            {%- endif %}
+# Rain Tomorrow - End
+# Current Inside Humidity - Start
+      current_inside_humidity:
+        friendly_name: "Current Inside Humidity"
+        entity_id: climate.my_ecobee
+        unit_of_measurement: '%'
+        value_template: "{{ states.climate.my_ecobee.attributes.current_humidity }}"
+# Current Inside Humidity - End
+# Living Room TV Source - Start
+      living_room_tv_source:
+        friendly_name: "Living Room TV Source"
+        value_template: "{{ state_attr('media_player.living_room_samsung_tv', 'source') }}"
+# Living Room TV Source - Start
+# OctoPrint - Start
+# STL Size - Start
+      stl_size:
+        friendly_name: "STL Size"
+        unit_of_measurement: 'MB'
+        value_template: "{{ states('sensor.stl_size_api') | round(1) }}"
+# STL Size - End
+# Filament Cost - Start
+      filament_cost:
+        friendly_name: "Filament Cost"
+        unit_of_measurement: '$'
+        value_template: "{{ states('sensor.filament_amount_api') | multiply(0.075) | round(2) }}"
+# Filament Cost - End
+# Filament Lenght - Start
+      filament_lenght:
+        friendly_name: "Filament Lenght"
+        unit_of_measurement: 'm'
+        value_template: "{{ states('sensor.filament_amount_api') | round(1) }}"
+# Filament Lenght - End
+# Hotend Actual - Start
+      hotend:
+        friendly_name: 'Hotend Actual'
+        value_template: "{{ ((states.sensor.octoprint_tool_0_temperature.state | float-32) | float*(5/9)) | round(2) }} °C"
+        unit_of_measurement: '°C'
+# Hotend Actual - End
+# Hotend Target - Start
+      hotend_target:
+        friendly_name: 'Hotend Target'
+        value_template: "{{ ((states.sensor.octoprint_tool_0_target.state | float-32) | float*(5/9)) | round(2) }} °C"
+        unit_of_measurement: '°C'
+# Hotend Target - End
+# Bed Actual - Start
+      bed:
+        friendly_name: 'Bed Actual'
+        value_template: "{{ ((states.sensor.octoprint_bed_temperature.state | float-32) | float*(5/9)) | round(2) }} °C"
+        unit_of_measurement: '°C'
+# Bed Actual - End
+# Bed Target - Start
+      bed_target:
+        friendly_name: 'Bed Target'
+        value_template: "{{ ((states.sensor.octoprint_bed_target.state | float-32) | float*(5/9)) | round(2) }} °C"
+        unit_of_measurement: '°C'
+# Bed Target - End
+# OctoPrint - End
+# Template - End
+# Time & Date - Start
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_date'
+# Time & Date - End
+# Weatherflow - Start
+  - platform: smartweatherudp
+    host: 0.0.0.0
+    wind_unit: kmh
+    monitored_conditions:
+      - temperature
+      - dewpoint
+      - feels_like
+      - heat_index
+      - wind_chill
+      - wind_speed
+      - wind_bearing
+      - wind_speed_rapid
+      - wind_bearing_rapid
+      - wind_gust
+      - wind_lull
+      - wind_direction
+      - precipitation
+      - precipitation_rate
+      - humidity
+      - pressure
+      - uv
+      - solar_radiation
+      - illuminance
+      - lightning_count
+      - airbattery
+# Weatherflow - End
+# Version - Start
+  - platform: version
+# Version - End

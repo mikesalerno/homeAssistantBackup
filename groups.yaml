@@ -1,0 +1,131 @@
+########################################################################################
+#              _              _           _      _                  _          _        
+#             /\ \           /\ \        /\ \   /\_\               /\ \       / /\      
+#            /  \ \         /  \ \      /  \ \ / / /         _    /  \ \     / /  \     
+#           / /\ \_\       / /\ \ \    / /\ \ \\ \ \__      /\_\ / /\ \ \   / / /\ \__  
+#          / / /\/_/      / / /\ \_\  / / /\ \ \\ \___\    / / // / /\ \_\ / / /\ \___\ 
+#         / / / ______   / / /_/ / / / / /  \ \_\\__  /   / / // / /_/ / / \ \ \ \/___/ 
+#        / / / /\_____\ / / /__\/ / / / /   / / // / /   / / // / /__\/ /   \ \ \       
+#       / / /  \/____ // / /_____/ / / /   / / // / /   / / // / /_____/_    \ \ \      
+#      / / /_____/ / // / /\ \ \  / / /___/ / // / /___/ / // / /      /_/\__/ / /      
+#     / / /______\/ // / /  \ \ \/ / /____\/ // / /____\/ // / /       \ \/___/ /       
+#     \/___________/ \/_/    \_\/\/_________/ \/_________/ \/_/         \_____\/        
+#                                                                                       
+########################################################################################
+# Antonella's Bedroom Lights
+antonella_s_bedroom_lights:
+  name: Antonella's Bedroom Lights
+  entities:
+    - light.antonella_s_bedroom_lights
+    - switch.antonella_s_closet_lights
+# Antonella's Bedroom Lights - End
+# Christmas Lights - Start
+christmas_lights:
+  name: Christmas Lights
+  entities:
+    - switch.fireplace
+    - switch.living_room_window
+    - switch.living_room_tv
+    - switch.front_yard
+# Christmas Lights - End
+# Dominic's Bedroom Lights - Start
+dominic_s_bedroom_lights:
+  name: Dominic's Bedroom Lights
+  entities:
+    - light.dominic_s_bedroom_lights
+    - light.dominic_s_bedroom_bed_lamp
+    - light.dominic_s_under_bed_light
+    - switch.dominic_s_bedroom_closet_light
+    - light.nanoleaf
+# Dominic's Bedroom Lights - End
+# Dominic's Bedroom Windows - Start
+dominic_s_bedroom_windows:
+  name: Dominic's Bedroom Windows
+  entities:
+    - binary_sensor.dominic_s_bedroom_front_window
+    - binary_sensor.dominic_s_bedroom_side_window
+# Dominic's Bedroom Windows - End
+# Downstairs Hallway Lights - Start
+downstairs_hallway_lights:
+  name: Downstairs Hallway Lights
+  entities:
+    - light.downstairs_hallway_lights
+    - switch.shelly_shsw_1_770f14
+# Downstairs Hallway Lights - End
+# Exterior Lights - Start
+exterior_lights:
+  name: Exterior Lights
+  entities:
+    - light.exterior_back_yard_lights
+    - light.exterior_front_porch_lights
+    - switch.exterior_back_deck_lights
+    - switch.exterior_side_door_light
+# Exterior Lights - End
+# Family Room Lights - Start
+family_room_lights:
+  name: Family Room Lights
+  entities:
+    - light.family_room_lights
+    - light.office_desk
+    - light.office_lights
+    - light.family_room_accent_lights
+    - light.family_room_tv_bloom
+# Family Room Lights - End
+# Garage Doors - Start
+garage_doors:
+  name: Garage Doors
+  entities: 
+    - cover.left_garage_door_opener
+    - cover.right_garage_door_opener
+# Garage Doors - End
+# Kitchen Cabinet Lights - Start
+kitchen_cabinet_lights:
+  name: Kitchen Cabinet Lights
+  entities:
+    - light.left_side_over_cabinet
+    - light.left_side_under_cabinet
+    - light.right_side_over_cabinet
+    - light.right_side_under_cabinet
+# Kitchen Cabinet Lights - End
+# Kitchen Lights - Start
+kitchen_lights:
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_lights
+    - light.kitchen_sink_light
+    - light.left_side_over_cabinet
+    - light.left_side_under_cabinet
+    - light.right_side_over_cabinet
+    - light.right_side_under_cabinet
+# Kitchen Lights - End
+# Living Room Lights - Start
+living_room_lights:
+  name: Living Room Lights
+  entities:
+    - light.living_room_lights
+    - light.living_room_floor_lamp
+    - light.living_room_tv_bloom
+# Living Room Lights - End
+# Living Room Windows - Start
+living_room_windows:
+  name: Living Room Windows
+  entities:
+    - binary_sensor.left_living_room_window
+    - binary_sensor.right_living_room_window
+# Living Room Windows - End
+# Master Bedroom Blinds - Start
+master_bedroom_blinds:
+  name: Master Bedroom Blinds
+  entities:
+    - cover.master_bedroom_back_blind
+    - cover.master_bedroom_side_blind
+# Master Bedroom Blinds - End
+# Master Bedroom Lights - Start
+master_bedroom_lights:
+  name: Master Bedroom Lights
+  entities:
+    - light.master_bedroom_lights
+    - switch.master_bedroom_closet_light
+    - light.master_bedroom_mike_s_lamp
+    - light.master_bedroom_stephanie_s_lamp
+# Master Bedroom Lights - End

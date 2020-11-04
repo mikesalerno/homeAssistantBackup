@@ -1,0 +1,72 @@
+########################################################################################################################################################################
+#             _   _         _          _             _          _                    _          _             _    _        _          _            _          _        
+#            /\_\/\_\ _    /\ \       /\ \          /\ \       / /\                 /\ \       _\ \          / /\ /\ \     /\_\       /\ \         /\ \       / /\      
+#           / / / / //\_\ /  \ \     /  \ \____     \ \ \     / /  \               /  \ \     /\__ \        / /  \\ \ \   / / /      /  \ \       /  \ \     / /  \     
+#          /\ \/ \ \/ / // /\ \ \   / /\ \_____\    /\ \_\   / / /\ \             / /\ \ \   / /_ \_\      / / /\ \\ \ \_/ / /      / /\ \ \     / /\ \ \   / / /\ \__  
+#         /  \____\__/ // / /\ \_\ / / /\/___  /   / /\/_/  / / /\ \ \           / / /\ \_\ / / /\/_/     / / /\ \ \\ \___/ /      / / /\ \_\   / / /\ \_\ / / /\ \___\ 
+#        / /\/________// /_/_ \/_// / /   / / /   / / /    / / /  \ \ \         / / /_/ / // / /         / / /  \ \ \\ \ \_/      / /_/_ \/_/  / / /_/ / / \ \ \ \/___/ 
+#       / / /\/_// / // /____/\  / / /   / / /   / / /    / / /___/ /\ \       / / /__\/ // / /         / / /___/ /\ \\ \ \      / /____/\    / / /__\/ /   \ \ \       
+#      / / /    / / // /\____\/ / / /   / / /   / / /    / / /_____/ /\ \     / / /_____// / / ____    / / /_____/ /\ \\ \ \    / /\____\/   / / /_____/_    \ \ \      
+#     / / /    / / // / /______ \ \ \__/ / /___/ / /__  / /_________/\ \ \   / / /      / /_/_/ ___/\ / /_________/\ \ \\ \ \  / / /______  / / /\ \ \ /_/\__/ / /      
+#     \/_/    / / // / /_______\ \ \___\/ //\__\/_/___\/ / /_       __\ \_\ / / /      /_______/\__\// / /_       __\ \_\\ \_\/ / /_______\/ / /  \ \ \\ \/___/ /       
+#             \/_/ \/__________/  \/_____/ \/_________/\_\___\     /____/_/ \/_/       \_______\/    \_\___\     /____/_/ \/_/\/__________/\/_/    \_\/ \_____\/        
+#                                                                                                                                                                       
+########################################################################################################################################################################
+# Family Room Fire TV Stick - Start
+  - platform: androidtv
+    host: !secret family_room_fire_stick_ip
+    name: "ADB Family Room Fire TV"
+    adb_server_ip: !secret adb_server_ip
+    adb_server_port: !secret adb_server_port
+# Family Room Fire TV Stick - End
+# Living Room Fire TV Cube - Start
+  - platform: androidtv
+    host: !secret living_room_fire_cube_ip
+    name: "ADB Living Room Fire TV"
+    adb_server_ip: !secret adb_server_ip
+    adb_server_port: !secret adb_server_port
+# Living Room Fire TV Cube - End
+# Master Bedroom Fire Stick - Start
+  - platform: androidtv
+    host: !secret master_bedroom_fire_stick_ip
+    name: "ADB Master Bedroom Fire TV"
+    adb_server_ip: !secret adb_server_ip
+    adb_server_port: !secret adb_server_port
+# Master Bedroom Fire Stick - End
+# Universal - Start
+# Combined Living Room - Start
+  - platform: universal
+    name: "Combined Living Room"
+    children:
+      - media_player.living_room
+      - media_player.living_room_samsung_tv
+    commands:
+      turn_on:
+        service: media_player.turn_on
+        data: 
+          entity_id: media_player.living_room_samsung_tv
+      turn_off:
+        service: media_player.turn_off
+        data: 
+          entity_id: media_player.living_room_samsung_tv
+      volume_up:
+        service: media_player.volume_up
+        data: 
+          entity_id: media_player.living_room_samsung_tv
+      volume_down:
+        service: media_player.volume_down
+        data: 
+          entity_id: media_player.living_room_samsung_tv
+      select_source:
+        service: media_player.select_source
+        data_template:
+          entity_id: media_player.living_room_samsung_tv
+          source: '{{ source }}'
+    attributes:
+      state: media_player.living_room_samsung_tv
+      is_volume_muted: media_player.living_room|is_volume_muted
+      source: media_player.living_room_samsung_tv|source
+      source_list: media_player.living_room_samsung_tv|source_list
+      volume_level: media_player.living_room|volume_level
+# Combined Living Room - End
+# Universal - End

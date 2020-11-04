@@ -1,0 +1,63 @@
+################################################################################################################
+#              _           _             _             _            _          _            _            _      
+#             /\ \        /\ \         /\ \           /\ \         /\ \       /\ \         /\ \         /\ \    
+#            /  \ \      /  \ \       /  \ \         /  \ \       /  \ \     /  \ \____   /  \ \       /  \ \   
+#           / /\ \ \    / /\ \ \     / /\ \ \       / /\ \ \     / /\ \ \   / /\ \_____\ / /\ \ \     / /\ \ \  
+#          / / /\ \_\  / / /\ \_\   / / /\ \ \     / / /\ \ \   / / /\ \_\ / / /\/___  // / /\ \_\   / / /\ \_\ 
+#         / / /_/ / / / /_/_ \/_/  / / /  \ \_\   / / /  \ \_\ / / /_/ / // / /   / / // /_/_ \/_/  / / /_/ / / 
+#        / / /__\/ / / /____/\    / / /    \/_/  / / /   / / // / /__\/ // / /   / / // /____/\    / / /__\/ /  
+#       / / /_____/ / /\____\/   / / /          / / /   / / // / /_____// / /   / / // /\____\/   / / /_____/   
+#      / / /\ \ \  / / /______  / / /________  / / /___/ / // / /\ \ \  \ \ \__/ / // / /______  / / /\ \ \     
+#     / / /  \ \ \/ / /_______\/ / /_________\/ / /____\/ // / /  \ \ \  \ \___\/ // / /_______\/ / /  \ \ \    
+#     \/_/    \_\/\/__________/\/____________/\/_________/ \/_/    \_\/   \/_____/ \/__________/\/_/    \_\/    
+#                                                                                                               
+################################################################################################################
+# Exclude - Start
+  db_url: !secret mariadb_url
+  exclude:
+# Entities - Start
+    entities:
+      - binary_sensor.updater
+      - sensor.date
+      - sensor.date_time
+      - sensor.time_date
+      - sensor.normaldate
+      - sensor.normaltime
+      - sensor.time
+      - sensor.antonella_s_echo_dot_next_alarm
+      - sensor.antonella_s_echo_dot_next_reminder
+      - sensor.antonella_s_echo_dot_next_timer
+      - sensor.current_version
+      - sensor.dominic_s_echo_dot_next_alarm
+      - sensor.dominic_s_echo_dot_next_reminder
+      - sensor.dominic_s_echo_dot_next_timer
+      - sensor.family_room_echo_next_alarm
+      - sensor.family_room_echo_next_reminder
+      - sensor.family_room_echo_next_timer
+      - sensor.kitchen_echo_show_next_alarm
+      - sensor.kitchen_echo_show_next_reminder
+      - sensor.kitchen_echo_show_next_timer
+      - sensor.living_room_fire_tv_cube_next_alarm
+      - sensor.living_room_fire_tv_cube_next_reminder
+      - sensor.living_room_fire_tv_cube_next_timer
+      - sensor.master_bedroom_echo_spot_next_alarm
+      - sensor.master_bedroom_echo_spot_next_reminder
+      - sensor.master_bedroom_echo_spot_next_timer
+# Entities - End
+# Exclude - End
+# Include - Start
+  include:
+# Domains - Start
+    domains:
+      - binary_sensor
+      - calendar
+      - device_tracker
+      - media_player
+      - person
+      - sensor
+# Domains - end
+# Include - End
+# Options - Start
+  auto_purge: true
+  purge_keep_days: 1
+# Options - End

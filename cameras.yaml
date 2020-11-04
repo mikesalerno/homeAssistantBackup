@@ -1,0 +1,61 @@
+####################################################################################################################
+#               _             _                  _   _         _            _           _                  _        
+#             /\ \           / /\               /\_\/\_\ _    /\ \         /\ \        / /\               / /\      
+#            /  \ \         / /  \             / / / / //\_\ /  \ \       /  \ \      / /  \             / /  \     
+#           / /\ \ \       / / /\ \           /\ \/ \ \/ / // /\ \ \     / /\ \ \    / / /\ \           / / /\ \__  
+#          / / /\ \ \     / / /\ \ \         /  \____\__/ // / /\ \_\   / / /\ \_\  / / /\ \ \         / / /\ \___\ 
+#         / / /  \ \_\   / / /  \ \ \       / /\/________// /_/_ \/_/  / / /_/ / / / / /  \ \ \        \ \ \ \/___/ 
+#        / / /    \/_/  / / /___/ /\ \     / / /\/_// / // /____/\    / / /__\/ / / / /___/ /\ \        \ \ \       
+#       / / /          / / /_____/ /\ \   / / /    / / // /\____\/   / / /_____/ / / /_____/ /\ \   _    \ \ \      
+#      / / /________  / /_________/\ \ \ / / /    / / // / /______  / / /\ \ \  / /_________/\ \ \ /_/\__/ / /      
+#     / / /_________\/ / /_       __\ \_\\/_/    / / // / /_______\/ / /  \ \ \/ / /_       __\ \_\\ \/___/ /       
+#     \/____________/\_\___\     /____/_/        \/_/ \/__________/\/_/    \_\/\_\___\     /____/_/ \_____\/        
+#                                                                                                                   
+####################################################################################################################
+# FFmpeg - Start
+# Antonella's Bedroom Camera - Start
+  - platform: ffmpeg
+    name:  Antonella's Bedroom
+    input: !secret antonella_rtsp
+    extra_arguments: -pred 1 -q:v 2
+# Antonella's Bedroom Camera - End
+# Dominic's Bedroom - Start
+  - platform: ffmpeg
+    name: Dominic's Bedroom
+    input: !secret dominic_rtsp
+    extra_arguments: -pred 1 -q:v 2
+# Dominic's Bedroom - End
+# Family Room Camera - Start
+  - platform: ffmpeg
+    name: Family Room
+    input: !secret family_rtsp
+    extra_arguments: -pred 1 -q:v 2
+# Family Room Camera - End
+# Kitchen Camera - Start
+  - platform: ffmpeg
+    name: Kitchen
+    input: !secret kitchen_rtsp
+    extra_arguments: -pred 1 -q:v 2
+# Kitchen Camera - End
+# Living Room Camera - Start
+  - platform: ffmpeg
+    name: Living Room
+    input: !secret living_room_rtsp
+    extra_arguments: -pred 1 -q:v 2
+# Living Room Camera - End
+# Master Bedroom Camera - Start
+  - platform: ffmpeg
+    name: Master Bedroom
+    input: !secret master_rtsp
+    extra_arguments: -pred 1 -q:v 2
+# Master Bedroom Camera - End
+
+# FFmpeg - End
+# MJPEG - Start
+# Octoprint - Start
+  - platform: mjpeg
+    name: OctoPrint
+    still_image_url: !secret octo_still
+    mjpeg_url: !secret octo_mjpeg
+# Octoprint - End
+# MJPEG - End

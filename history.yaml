@@ -1,0 +1,61 @@
+##############################################################################################
+#              _       _     _         _          _            _            _    _        _   
+#             / /\    / /\  /\ \      / /\       /\ \         /\ \         /\ \ /\ \     /\_\ 
+#            / / /   / / /  \ \ \    / /  \      \_\ \       /  \ \       /  \ \\ \ \   / / / 
+#           / /_/   / / /   /\ \_\  / / /\ \__   /\__ \     / /\ \ \     / /\ \ \\ \ \_/ / /  
+#          / /\ \__/ / /   / /\/_/ / / /\ \___\ / /_ \ \   / / /\ \ \   / / /\ \_\\ \___/ /   
+#         / /\ \___\/ /   / / /    \ \ \ \/___// / /\ \ \ / / /  \ \_\ / / /_/ / / \ \ \_/    
+#        / / /\/___/ /   / / /      \ \ \     / / /  \/_// / /   / / // / /__\/ /   \ \ \     
+#       / / /   / / /   / / /   _    \ \ \   / / /      / / /   / / // / /_____/     \ \ \    
+#      / / /   / / /___/ / /__ /_/\__/ / /  / / /      / / /___/ / // / /\ \ \        \ \ \   
+#     / / /   / / //\__\/_/___\\ \/___/ /  /_/ /      / / /____\/ // / /  \ \ \        \ \_\  
+#     \/_/    \/_/ \/_________/ \_____\/   \_\/       \/_________/ \/_/    \_\/         \/_/  
+#                                                                                             
+##############################################################################################
+# Exclude - Start
+  exclude:
+# Entities - Start
+    entities:
+      - binary_sensor.updater
+      - sensor.date
+      - sensor.date_time
+      - sensor.time_date
+      - sensor.normaldate
+      - sensor.normaltime
+      - sensor.time
+      - sensor.antonella_s_echo_dot_next_alarm
+      - sensor.antonella_s_echo_dot_next_reminder
+      - sensor.antonella_s_echo_dot_next_timer
+      - sensor.current_version
+      - sensor.dominic_s_echo_dot_next_alarm
+      - sensor.dominic_s_echo_dot_next_reminder
+      - sensor.dominic_s_echo_dot_next_timer
+      - sensor.family_room_echo_next_alarm
+      - sensor.family_room_echo_next_reminder
+      - sensor.family_room_echo_next_timer
+      - sensor.kitchen_echo_show_next_alarm
+      - sensor.kitchen_echo_show_next_reminder
+      - sensor.kitchen_echo_show_next_timer
+      - sensor.living_room_fire_tv_cube_next_alarm
+      - sensor.living_room_fire_tv_cube_next_reminder
+      - sensor.living_room_fire_tv_cube_next_timer
+      - sensor.master_bedroom_echo_spot_next_alarm
+      - sensor.master_bedroom_echo_spot_next_reminder
+      - sensor.master_bedroom_echo_spot_next_timer
+# Entities - End
+# Exclude - End
+# Include - Start
+  include:
+# Domains - Start
+    domains:
+      - binary_sensor
+      - calendar
+      - device_tracker
+      - media_player
+      - person
+      - sensor
+# Domains - end
+# Include - End
+# Options - Start
+  use_include_order: true
+# Options - End
