@@ -10,3 +10,258 @@
   - data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
     service_template: '{{ trigger.event.data.service }}'
+- id: '1606097165594'
+  alias: Master Bathroom Exhaust On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_shower_motion
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.master_bathroom_lights
+    state: 'on'
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.master_bathroom_exhaust
+  mode: single
+- id: '1606097277736'
+  alias: Master Bathroom Exhaust Off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.master_bathroom_lights
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: switch.master_bathroom_exhaust
+      state: 'on'
+  action:
+  - delay: 00:05:00
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.master_bathroom_exhaust
+  mode: single
+- id: '1606145599838'
+  alias: Attic Light On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.attic_pico
+    to: '1'
+    from: '0'
+  - platform: state
+    entity_id: binary_sensor.samjin_multi_d65d0001_ias_zone
+    from: closed
+    to: open
+  condition:
+  - condition: state
+    entity_id: light.attic
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data: {}
+    entity_id: light.attic
+  mode: single
+- id: '1606145879915'
+  alias: Attic Light Off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.attic_pico
+    from: '0'
+    to: '4'
+  - platform: state
+    entity_id: binary_sensor.samjin_multi_d65d0001_ias_zone
+    from: open
+    to: closed
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: light.attic
+      state: 'on'
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.attic
+  mode: single
+- id: '1606146897917'
+  alias: Night HVAC
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sun.sun
+    from: above_horizon
+    to: below_horizon
+  condition:
+  - condition: state
+    entity_id: input_boolean.away
+    state: 'off'
+  action:
+  - service: climate.set_preset_mode
+    data:
+      preset_mode: Night
+    entity_id: climate.my_ecobee
+  mode: single
+- id: '1606187210254'
+  alias: Dryer Done Push Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.momentary_dryer
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.away
+    state: 'on'
+  action:
+  - service: notify.mobile_app_michaels_iphone
+    data:
+      message: The Dryer is Done
+  - service: notify.mobile_app_pixel_3a_xl
+    data:
+      message: The Dryer is Done
+  mode: single
+- id: '1606187325141'
+  alias: Dryer Done Alexa Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.momentary_dryer
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.away
+    state: 'off'
+  action:
+  - service: notify.alexa_media_kitchen_echo_show
+    data:
+      message: The Dryer is Done
+      data:
+        type: tts
+  mode: single
+- id: '1606254459560'
+  alias: Washer Done Push Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.momentary_washer
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.away
+    state: 'on'
+  action:
+  - service: notify.mobile_app_pixel_3a_xl
+    data:
+      message: The Washing Machine is Done
+  - service: notify.mobile_app_michaels_iphone
+    data:
+      message: The Washing Machine is Done
+  mode: single
+- id: '1606254687081'
+  alias: Washer Done Alexa Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.momentary_washer
+  condition:
+  - condition: state
+    entity_id: input_boolean.away
+    state: 'off'
+  action:
+  - service: notify.alexa_media_kitchen_echo_show
+    data:
+      message: The Washing Machine is Done
+      data:
+        type: tts
+  mode: single
+- id: '1606254864498'
+  alias: Water Valve Push Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.water_valve
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.mobile_app_michaels_iphone
+    data:
+      message: Water Leak Detected, Valve Closed
+  - service: notify.mobile_app_pixel_3a_xl
+    data:
+      message: Water Leak Detected, Valve Closed
+  mode: single
+- id: '1606254934964'
+  alias: Water Valve Alexa Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.water_valve
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.away
+    state: 'off'
+  action:
+  - service: notify.alexa_media_kitchen_echo_show
+    data:
+      message: Water has been Detected and the Valve has been Closed
+  mode: single
+- id: '1606447761355'
+  alias: Night
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sun.sun
+    from: above_horizon
+    to: below_horizon
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 75
+    entity_id: light.exterior_back_yard_lights
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.exterior_back_deck_lights
+  - service: light.turn_on
+    data:
+      brightness_pct: 75
+    entity_id: light.exterior_front_porch_lights
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.exterior_side_door_light
+  - service: light.turn_on
+    data:
+      brightness_pct: 25
+    entity_id: light.front_foyer_pendants
+  - service: light.turn_on
+    data:
+      brightness_pct: 25
+    entity_id: light.living_room_floor_lamp
+  - service: light.turn_on
+    data:
+      brightness_pct: 50
+    entity_id: light.kitchen_sink_light
+  - service: light.turn_on
+    data:
+      entity_id: light.hallway_night_light
+      rgb_color:
+      - 255
+      - 160
+      - 39
+      brightness: 2
+    entity_id: light.hallway_night_light
+  mode: single
