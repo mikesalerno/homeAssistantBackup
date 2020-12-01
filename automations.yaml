@@ -264,4 +264,51 @@
       - 39
       brightness: 2
     entity_id: light.hallway_night_light
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.living_room_window
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.fireplace
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.dominic_s_christmas_tree
+  mode: single
+- id: '1606752037490'
+  alias: Living Room TV On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.living_room_tv_power_on
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: device
+    device_id: 7207a6e5a3f54eca855e21119d5a778f
+    domain: media_player
+    entity_id: media_player.living_room_samsung_tv
+    type: is_off
+  action:
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.living_room_samsung_tv
+  mode: single
+- id: '1606752125196'
+  alias: Living Room TV Off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.living_room_tv_power_off
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: device
+    device_id: 7207a6e5a3f54eca855e21119d5a778f
+    domain: media_player
+    entity_id: media_player.living_room_samsung_tv
+    type: is_on
+  action:
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.living_room_samsung_tv
   mode: single

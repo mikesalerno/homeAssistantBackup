@@ -19,6 +19,7 @@
 !*.sh
 !*.js*
 .ssh/
+!esphome/
 !node-red/
 .storage
 .cloud

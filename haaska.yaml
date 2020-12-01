@@ -33,6 +33,8 @@
 # Input Boolean - Start
         - input_boolean.3d_printer_power
         - input_boolean.goodnight
+        - input_boolean.living_room_tv_power_on
+        - input_boolean.living_room_tv_power_off
         - input_boolean.octoprint_bed
         - input_boolean.octoprint_hotend
         - input_boolean.octoprint_level
@@ -62,6 +64,7 @@
         - switch.radon_system
         - switch.right_garage_door
         - switch.water_valve
+        - switch.dominic_s_christmas_tree
 # Switch - End
 # Include Entities - End
 # Filters - End
