@@ -25,8 +25,8 @@ christmas_lights:
   entities:
     - switch.fireplace
     - switch.living_room_window
-    - switch.living_room_tv
     - switch.front_yard
+    - switch.living_room_corner
 # Christmas Lights - End
 # Dominic's Bedroom Lights - Start
 dominic_s_bedroom_lights:

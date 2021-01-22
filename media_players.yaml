@@ -15,7 +15,7 @@
 # Family Room Fire TV Cube - Start
   - platform: androidtv
     host: !secret family_room_fire_cube_ip
-    name: "ADB Family Room Fire TV"
+    name: ADB Family Room FireTV
     adb_server_ip: !secret adb_server_ip
     adb_server_port: !secret adb_server_port
 # Family Room Fire TV Cube - End
