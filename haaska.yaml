@@ -65,6 +65,7 @@
         - switch.right_garage_door
         - switch.water_valve
         - switch.dominic_s_christmas_tree
+        - switch.momentary_living_room_tv_cable
 # Switch - End
 # Include Entities - End
 # Filters - End

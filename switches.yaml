@@ -195,6 +195,13 @@
     toggle_for: 5
     cancellable: true
 # Washer - End
+# Living Room TV Cable - Start
+  - platform: momentary
+    name: living_room_tv_cable
+    mode: on
+    toggle_for: 5
+    cancellable: true
+# Living Room TV Cable - End
 # OctoPrint - Start
   - platform: command_line
     scan_interval: 5

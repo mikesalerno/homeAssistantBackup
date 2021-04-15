@@ -16,6 +16,34 @@
   - platform: airthings
     mac: !secret airthings_mac
 # Airthings Wave Plus - End
+# Fitbit - Start
+  - platform: fitbit
+    clock_format: 12H
+    monitored_resources:
+      - "activities/distance"
+      - "activities/elevation"
+      - "activities/floors"
+      - "activities/heart"
+      - "activities/minutesFairlyActive"
+      - "activities/minutesLightlyActive"
+      - "activities/minutesSedentary"
+      - "activities/minutesVeryActive"
+      - "activities/steps"
+      - "sleep/awakeningsCount"
+      - "sleep/efficiency"
+      - "sleep/minutesAfterWakeup"
+      - "sleep/minutesAsleep"
+      - "sleep/minutesAwake"
+      - "sleep/minutesToFallAsleep"
+      - "sleep/startTime"
+      - "sleep/timeInBed"
+      - "body/bmi"
+      - "body/fat"
+      - "body/weight"
+      - "activities/activityCalories"
+      - "activities/calories"
+      - "activities/caloriesBMR"
+# Fitbit - End
 # Command Line - Start
 # Octoprint - Start
 # Filament API - Start    

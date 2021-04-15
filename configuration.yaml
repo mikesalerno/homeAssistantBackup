@@ -24,6 +24,9 @@ browser_mod:
 # Camera - Start
 camera: !include cameras.yaml
 # Camera - End
+# cloud - Start
+cloud:
+# cloud - End
 # Configuration in UI - Start
 config:
 # Configuration in UI - End

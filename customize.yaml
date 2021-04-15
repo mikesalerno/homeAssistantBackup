@@ -45,3 +45,7 @@ cover.master_bedroom_side_blind:
   device_class: blind
 cover.master_bedroom_back_blind:
   device_class: blind
+switch.fireplace:
+  hidden: 'true'
+switch.living_room_window:
+  hidden: 'true'
